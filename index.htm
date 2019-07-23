@@ -1,0 +1,52 @@
+<style>
+    #c {
+        border: 1px solid lightgray;
+        background: #f0f0f0;
+    }
+</style>
+<canvas id="c" width="400" height="300"></canvas>
+<script>
+    var c = document.querySelector("#c");
+    let canvas_width = c.width;
+    let canvas_height = c.height;
+
+    var ctx = c.getContext("2d");
+    
+    var img = new Image();
+
+    img.onload = function() {
+        let image_width = this.width;
+        let image_height = this.height;
+
+        // 左上
+        // ctx.drawImage(img, 0, 0);
+
+        // 右上
+        // ctx.drawImage(this, canvas_width - image_width, 0);
+
+        // 居中
+        /*
+        ctx.drawImage(
+            this,
+            (canvas_width - image_width) / 2,
+            (canvas_height - image_height) / 2
+        );
+        */
+
+        // 截取图片部分
+        let image_part_width = 98;
+        ctx.drawImage(
+            this,
+            0,
+            0,
+            image_part_width,
+            image_height,
+            (canvas_width - image_part_width * 2) / 2,
+            (canvas_height - image_height * 2) / 2,
+            image_part_width * 2,
+            image_height * 2
+        );
+    }
+
+    img.src = "apache.gif";
+</script>
