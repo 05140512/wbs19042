@@ -264,6 +264,58 @@ git remote rename myproject project
 删除本地仓库关联的远程仓库
 git remote remove hello
 
+上传本地分支到远程
+================
+
+不管你当前分支位于哪里
+git push project master 是将本地分支master上传到远程master
+
+不管你当前分支位于哪里
+git push project new_feature 是将本地分支new_feature上传到远程new_feature
+
+如果要将本地分支b1合并到远程分支b2，不能直接合并！
+必须要先将远程分支b2下载到本地，再将本地分支b1合并到本地分支b2（这个b2其实是远程下载下来的），
+最后上传本地分支b2到远程分支b2实现本地b1到远程b2的合并！
+
+现在我想将fix_bugs合并到远程new_feature
+git pull project new_feature:new_feature
+
+git checkout new_feature
+
+git merge fix_bugs
+
+git push project new_feature
+
+------------------------------------------------------------------------
+
+如果不存在跨分支的合并，那么直接push你要上传的分支即可！
+
+------------------------------------------------------------------------
+
+
+下载远程的分支fix_bugs到本地fix_bugs
+git pull project fix_bugs:fix_bugs
+
+--------------------------------------------------------------------------
+
+使用github发布个人静态页面（htm, css, javascript, images）
+
+两种方式：
+I、
+1、将自己的页面内容上传至gh-pages远程分支
+2、访问
+    https://账户名.github.io/仓库名/页面名称（默认index.htm可以省略）
+
+II、
+1、直接创建“账户名.github.io”的远程仓库
+2、将自己的页面内容上传至master远程分支
+3、访问
+    https://账户名.github.io/页面名称（默认index.htm可以省略）
+
+
+
+
+
 
 
 
